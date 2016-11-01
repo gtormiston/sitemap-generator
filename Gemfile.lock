@@ -4,6 +4,15 @@ GEM
     diff-lcs (1.2.5)
     extlib (0.9.16)
     highline (1.7.8)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
+    mini_portile2 (2.1.0)
+    multi_xml (0.5.5)
+    net-ping (2.0.1)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    pkg-config (1.1.7)
     public_suffix (2.0.3)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -25,6 +34,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  httparty
+  net-ping
+  nokogiri
   public_suffix
   rspec-sinatra
   sass
