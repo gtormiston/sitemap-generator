@@ -2,7 +2,7 @@ require 'sinatra/base'
 
 class SitemapGenerator < Sinatra::Base
   get '/' do
-    'Hello SitemapGenerator!'
+    erb :index
   end
 
   # start the server if ruby file executed directly

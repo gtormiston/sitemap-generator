@@ -3,6 +3,13 @@
 
 A simple Ruby / Sinatra powered web crawler & sitemap generator for a single given domain. The program crawls pages on the given domain but does not follow external links.
 
+
+### To run the program locally
+---
+
+
+
+
 ### User Stories
 ---
 
