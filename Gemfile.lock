@@ -4,6 +4,7 @@ GEM
     diff-lcs (1.2.5)
     extlib (0.9.16)
     highline (1.7.8)
+    public_suffix (2.0.3)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -24,6 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  public_suffix
   rspec-sinatra
   sass
   sinatra

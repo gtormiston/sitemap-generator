@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative './models/domain.rb'
 
 class SitemapGenerator < Sinatra::Base
   get '/' do

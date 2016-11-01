@@ -8,4 +8,14 @@ feature "Sitemap Generator" do
     page.find(:css,'.url-form')
   end
 
+  xscenario "Form captures URL" do
+      visit('/')
+      # fill in input
+      # submit
+      # expect page to have the entry on it as confirmation
+  end
+
+  scenario "Returns to the form if the domain ping fails"
+
+
 end
