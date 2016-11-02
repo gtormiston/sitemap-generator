@@ -1,6 +1,7 @@
 # Understands a website address
 require 'net/ping'
 require 'public_suffix'
+require_relative '../helpers/http_helpers'
 
 class Domain
 
@@ -21,12 +22,6 @@ class Domain
 
   def valid?
     PublicSuffix.domain(@url) != nil
-  end
-
-  private
-
-  def strip_http(url)
-    url.sub(/^https?\:\/\/?/,'')
   end
 
 end

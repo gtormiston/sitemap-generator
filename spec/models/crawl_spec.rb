@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'helpers/crawl_helpers'
 
 describe Crawl do
 

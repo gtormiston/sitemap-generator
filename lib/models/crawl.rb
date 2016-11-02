@@ -1,7 +1,8 @@
 # understands the content of a web page
 require "httparty"
 require "uri"
-require 'nokogiri'
+require "nokogiri"
+require_relative "../helpers/http_helpers"
 
 class Crawl
 
@@ -39,13 +40,6 @@ class Crawl
   def get_body(url)
     response = HTTParty.get(url)
     response.body
-  end
-
-
-  private
-
-  def prepend_http(url)
-      url = "http://#{url}" unless url=~/^https?:\/\//
   end
 
 end
