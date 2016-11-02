@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.4.0)
     diff-lcs (1.2.5)
     extlib (0.9.16)
     highline (1.7.8)
@@ -34,6 +35,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   httparty
   net-ping
   nokogiri

@@ -3,5 +3,5 @@ def strip_http(url)
 end
 
 def prepend_http(url)
-    url = "http://#{url}" unless url=~/^https?:\/\//
+  "http://#{url}" unless url=~/^https?:\/\//
 end
