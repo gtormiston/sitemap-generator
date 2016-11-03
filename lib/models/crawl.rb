@@ -7,43 +7,51 @@ require_relative "../helpers/http_helpers"
 
 class Crawl
 
-  attr_reader :url, :links, :assets, :site
+  attr_reader :url, :processed, :site_info
 
   def initialize(url)
     @url = prepend_http(url)
-    @links = []
-    @assets = []
-    @site = {}
+    @processed = [["/",false,false,[]]] # [link,link_crawl_complete,asset_crawl_complete,'list of assets for link'
+    @site_info = { links_found: 1, links_crawled: 0, external_links_found: 0 }
   end
 
   def crawl
     url = Addressable::URI.parse(@url)
-    body = get_body(url)
-    # for each page?
-    get_links(body)
-    # get_assets(body)
-    # run through this process for each page in the array, checking the links against the array and not adding duplicates
+    loop_through_links(url)
     # check status of each link to ensure they are available?
     # store the response.body along with the link in a hash like link:body
     # iterate through the hash to find all the static assets in the
   end
 
-  def get_links(body)
-    document = Nokogiri::HTML(body)
+  def loop_through_links(url)
+    while @site_info[:links_found] > @site_info[:links_crawled] do
+      #  loops through available, uncrawled urls in the @processed array
+      #  something like if @processed.any? x[0] == (link) && [1] == false
+        body = get_body(url)
+        process_links(body)
+      #  then check if assets == true
+      # process_assets(body)
+      # else move on i++
+    end
+  end
+
+  def process_links(body)
+    # access array for the url
+    document = parse_html(body)
     i = 0
     count = document.css('a').count
     while i < count do
       link = document.css('a')[i]['href']
-      if !link.nil?
-        if internal?(link)
-          @links.empty? ? @links << link : check_link_and_save(link)
-        end
+      if internal?(link)
+        check_link_and_save(link)
+        @site_info[:links_found] += 1
       end
-      i +=1
+      i+=1
     end
+    # update array [1] to true
   end
 
-  def get_assets(document)
+  def process_assets(document)
     # goes through the HTML and finds the image tags on the site
     # replace this with all assets
     i = 0
@@ -53,29 +61,40 @@ class Crawl
        # check asset is local before saving?
        i +=1
     end
+    # update array [2] to true
   end
+
+  private
 
   def get_body(url)
     response = HTTParty.get(url)
     response.body
   end
 
-  private
+  def parse_html(html)
+    Nokogiri::HTML(html)
+  end
 
   def internal?(link)
     prefix = %w( http https // )
-    # checks whether link contains http or https
     if !prefix.include?(URI.parse(link).scheme)
       true
     else
       link = Addressable::URI.parse(link).host.downcase
       url = Addressable::URI.parse(@url).host.downcase
-      link == url
+      if link == url
+        true
+      else
+        @site_info[:external_links_found] += 1
+        return false
+      end
     end
   end
 
   def check_link_and_save(link)
-    @links << link unless @links.include?(link)
+    uri = Addressable::URI.parse(link)
+    link = uri.path
+    @processed << [link,false,false,[]] unless @processed.any? {|x| x[0] == (link)}
   end
 
 end

@@ -16,7 +16,7 @@ class Domain
       check = Net::Ping::External.new(@url)
       check.ping?
     else
-      raise "This is not a valid domain"
+      return false
     end
   end
 

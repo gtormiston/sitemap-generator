@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Sitemap Generator" do
+feature "Features" do
 
   scenario "Loads index page with form" do
     visit('/')
@@ -8,14 +8,26 @@ feature "Sitemap Generator" do
     page.find(:css,'.url-form')
   end
 
-  xscenario "Form captures URL" do
-      visit('/')
-      # fill in input
-      # submit
-      # expect page to have the entry on it as confirmation
+  scenario "Form captures URL without prefix" do
+    visit('/')
+    fill_in('url', :with => 'ormi.io')
+    find('#verify').click
+    expect(page).to have_content('Results for domain: ormi.io')
   end
 
-  scenario "Returns to the form if the domain ping fails"
+  scenario "Form captures URL with prefix" do
+    visit('/')
+    fill_in('url', :with => 'http://ormi.io')
+    find('#verify').click
+    expect(page).to have_content('Results for domain: ormi.io')
+  end
+
+  scenario "Returns to the form page with an error if the url ping fails" do
+    visit('/')
+    fill_in('url', :with => 'foo.bar')
+    find('#verify').click
+    expect(page).to have_content('There seems to be a problem accessing foo.bar')
+  end
 
 
 end

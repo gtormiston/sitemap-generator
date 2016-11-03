@@ -2,5 +2,7 @@
 
 <form class="url-form" action="results" method="POST">
   <input name="url" />
-  <input type="submit">
+  <input type="submit" value="Verify" id="verify">
 </form>
+
+<%= '<p>#{flash[:domain_error]}</p>' %>
