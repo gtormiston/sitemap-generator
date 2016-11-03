@@ -5,4 +5,6 @@
   <input type="submit" value="Verify" id="verify">
 </form>
 
-<%= '<p>#{flash[:domain_error]}</p>' %>
+<%= if flash[:domain_error]
+  "<p/>#{flash[:domain_error]}</p>"
+end %>

@@ -2,4 +2,14 @@
 
 <p>Results for domain: <%= @url.url %></p>
 
-<%= @crawl.processed %>
+<%=
+
+  @crawl.processed.each do |link|
+    "<p>" + link[0] + "</p>"
+    if link[1] == true
+      "<p>link crawled</p>"
+    end
+  end
+
+
+ %>
