@@ -2,4 +2,5 @@ language: ruby
 rvm:
  - 2.2
 
- bundle exec ruby -S rackup -w config.ru
+script:
+-  bundle exec ruby -S rackup -w config.ru

@@ -32,7 +32,7 @@ Travis CI
 
 I designed the app with a few key features - to *process the domain* (which would include validation and a status checker), to *crawl the pages* (to verify the number of pages on the site) and then to *crawl the assets for each page*. Finally, a *print* function would output the crawled information in the desired format.
 
-I attempted to write the program with short, clear methods throughout. Whilst I broke the functionality into two areas - understanding the domain and crawling the domain respectively - I feel that the Crawl class in particular has grown far too big and could do with a good refactor.  
+I attempted to write the program with short, clear methods throughout. Whilst I broke the functionality into two areas - understanding the domain and crawling the domain respectively - I feel that the Crawl class in particular has grown far too big and with more time I would look at moving functionality out - some of the methods could well sit in the Domain class as they deal with stripping / adding prefixes and checking the validity of the domain before storing in the array.
 
 
 
