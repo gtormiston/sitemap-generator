@@ -6,6 +6,7 @@ require "nokogiri"
 require "addressable/uri"
 require 'sanitize'
 require_relative "../helpers/http_helpers"
+require_relative "./printer"
 
 class Crawl
 
@@ -21,7 +22,7 @@ class Crawl
   def crawl
     url = Addressable::URI.parse(@url)
     loop_through_links(url)
-    # print page or send to page
+    send_to_print
   end
 
   def loop_through_links(url)
@@ -31,15 +32,15 @@ class Crawl
           p "crawling: " + link_array[0]
           body = get_body(url)
           process_links(body)
-          link_array[1] = true
-          increment_crawled
           assets = process_assets(body)
+          increment_crawled
+          link_array[1] = true
           link_array[3] = assets
           link_array[2] = true
         end
       end
     end
-    puts "***complete***"
+    p "***complete***"
   end
 
   def process_links(body)
@@ -131,6 +132,10 @@ class Crawl
 
   def increment_external_found
     @site_info[:external_links_found] += 1
+  end
+
+  def send_to_print
+    Printer.new(@processed)
   end
 
 end

@@ -38,14 +38,14 @@ describe Crawl do
   end
 
   context 'static assets' do
-    it 'does not record external static assets'
-    xit 'stores assets in an empty array' do
-      expect(subject.assets).to be_kind_of(Array)
-      expect(subject.assets.count).to be(0)
+    it 'stores assets in an empty array' do
+      expect(subject.processed).to be_kind_of(Array)
+      expect(subject.processed[0][3].count).to be(0)
     end
   end
 
-  context 'warnings' do
+  # TODO
+  context 'warnings for edge cases' do
     it 'checks canonical against the given domain'
     it 'warns if http content is being served from https site'
   end

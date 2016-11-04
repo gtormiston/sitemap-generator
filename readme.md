@@ -7,8 +7,12 @@ A simple Ruby / Sinatra powered web crawler & sitemap generator for a single giv
 ### To run the program locally
 ---
 
+Dependencies - [bundler](http://bundler.io/) to install gems, app tested using Ruby v2.2.0
 
-
+1. `bundle install` to install gems
+2. `rspec` to see current tests
+3. `rackup` to run the app
+4. visit `localhost:9292` in the browser to preview the app
 
 ### User Stories
 ---
@@ -35,21 +39,12 @@ I want to see all static assets for each page
 ```
 ```
 As a User
-So that I don't see duplicates
-I want redirected pages to be removed from the sitemap
-```
-```
-As a User
-So that I can see potential problems
-I want to see pages that are dead links (404)
-```
-```
-As a User
-So that I can see potential problems
-I want to see which assets are dead links
+So I can see how long it will take to crawl the sitemap
+I would like to see an estimate of how many pages are left to crawl
 ```
 
-*Nice to have*
+
+*Future User Stories*
 ```
 As a User
 So that I know if I have made a mistake with the website address
@@ -72,11 +67,6 @@ I want to be notified if an HTTPS version of the site links to non-HTTPS assets
 ```
 ```
 As a User
-So I can see how long it will take to crawl the sitemap
-I would like to see an estimate of how many pages are left to crawl
-```
-```
-As a User
 So that I can send information of the sitemap to others
 I want to download a PDF of the sitemap
 ```
@@ -84,6 +74,21 @@ I want to download a PDF of the sitemap
 As a User
 So that I can use the sitemap on a website
 I want to download an XML version of the sitemap
+```
+```
+As a User
+So that I can see potential problems
+I want to see which assets are dead links
+```
+```
+As a User
+So that I don't see duplicates
+I want redirected pages to be removed from the sitemap
+```
+```
+As a User
+So that I can see potential problems
+I want to see pages that are dead links (404)
 ```
 
 

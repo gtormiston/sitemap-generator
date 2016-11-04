@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 gem "sinatra"
+gem "sinatra-json"
+gem "thin"
 gem "rspec-sinatra"
 gem "sass"
 gem "public_suffix"

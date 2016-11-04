@@ -1,15 +1,69 @@
-<h1>Results</h1>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="<%= url("/stylesheets/style.css")%>">
 
-<p>Results for domain: <%= @url.url %></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
-<%=
-
-  @crawl.processed.each do |link|
-    "<p>" + link[0] + "</p>"
-    if link[1] == true
-      "<p>link crawled</p>"
-    end
-  end
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
- %>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>Results</h1>
+
+      <p>Results for domain: <u><%= @url.url %></u></p>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div id="progressbar"></div>
+          <div id="percentage"></div>
+
+          <form class="form-inline try-another" action="/" method="GET">
+            <div class="form-group">
+              <input class="btn btn-default" type="submit" value="That was fun! Try Another">
+            </div>
+          </form>
+
+          <div id="sitemap"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+ <script>
+   $(document).ready(function() { crawl_update(); });
+
+   function crawl_update() {
+   $.ajax("/update", {
+    success: function(response) {
+        var links_found = response.links_found,
+        links_crawled = response.links_crawled,
+        sitemap = response.sitemap,
+        percentage = Math.round(((links_crawled /links_found) * 100)).toString() + "%";
+
+        $("#progressbar").progressbar({
+          value: links_crawled,
+          max: links_found
+        });
+        $("#percentage").html(percentage);
+
+        if (percentage === "100%"){
+          $(".try-another").fadeIn("slow");
+          $("#sitemap").html(sitemap);
+        } else {
+          window.setTimeout(crawl_update, 500);
+        }
+    },
+        dataType: "json",
+    })
+  }
+
+ </script>

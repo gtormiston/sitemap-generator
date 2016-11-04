@@ -1,10 +1,29 @@
-<h1>Sitemap Generator</h1>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="<%= url("/stylesheets/style.css")%>">
 
-<form class="url-form" action="results" method="POST">
-  <input name="url" />
-  <input type="submit" value="Verify" id="verify">
-</form>
 
-<%= if flash[:domain_error]
-  "<p/>#{flash[:domain_error]}</p>"
-end %>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Sitemap Generator</h1>
+
+      <p>Enter a domain name in the form below, for example <em>ormi.io</em>, or <em>google.com</em></p>
+
+      <%= "#{flash[:domain_error]}" %>
+
+      <form class="form-inline url-form" action="/results" method="POST">
+        <div class="form-group">
+          <label class="sr-only" for="url">Email address</label>
+          <input type="text" class="url-input form-control text-center" id="url" name="url" placeholder="domain.com" required>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-default" type="submit" value="Verify" id="verify">
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>

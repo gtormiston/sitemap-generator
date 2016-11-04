@@ -26,7 +26,7 @@ feature "Features" do
     visit('/')
     fill_in('url', :with => 'foo.bar')
     find('#verify').click
-    expect(page).to have_content('There seems to be a problem accessing foo.bar')
+    expect(page).to have_content('Are you sure foo.bar is a domain?')
   end
 
 
