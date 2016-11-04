@@ -13,10 +13,12 @@ class Domain
 
   def status
     if valid?
-      check = Net::Ping::External.new(@url)
-      check.ping?
+      # ping check removed for Heroku
+      # check = Net::Ping::External.new(@url)
+      # check.ping?
+      true
     else
-      return false
+      false
     end
   end
 
