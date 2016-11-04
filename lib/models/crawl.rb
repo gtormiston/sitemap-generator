@@ -134,8 +134,8 @@ class Crawl
     @site_info[:external_links_found] += 1
   end
 
-  def send_to_print
-    Printer.new(@processed)
-  end
+  # def send_to_print
+  #   Printer.new(@processed)
+  # end
 
 end

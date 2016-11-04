@@ -14,6 +14,29 @@ Dependencies - [bundler](http://bundler.io/) to install gems, app tested using R
 3. `rackup` to run the app
 4. visit `localhost:9292` in the browser to preview the app
 
+
+### Testing - TDD
+---
+
+RSpec (unit tests) / Capybara (feature tests)
+Travis CI
+
+### Initial Design
+---
+
+* Strip url
+* Ping url
+* Crawl url pages
+* Crawl url assets
+* Print
+
+I designed the app with a few key features - to *process the domain* (which would include validation and a status checker), to *crawl the pages* (to verify the number of pages on the site) and then to *crawl the assets for each page*. Finally, a *print* function would output the crawled information in the desired format.
+
+I attempted to write the program with short, clear methods throughout. Whilst I broke the functionality into two areas - understanding the domain and crawling the domain respectively - I feel that the Crawl class in particular has grown far too big and could do with a good refactor.  
+
+
+
+
 ### User Stories
 ---
 
@@ -90,18 +113,3 @@ As a User
 So that I can see potential problems
 I want to see pages that are dead links (404)
 ```
-
-### Testing - TDD
----
-
-RSpec (unit tests) / Capybara (feature tests)
-Travis CI
-
-### Initial Design
----
-
-* Strip url
-* Ping url
-* Crawl url pages
-* Crawl url assets
-* Print

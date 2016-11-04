@@ -1,3 +1,5 @@
 language: ruby
 rvm:
  - 2.2
+
+ bundle exec ruby -S rackup -w config.ru
