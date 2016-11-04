@@ -3,6 +3,8 @@
 
 A simple Ruby / Sinatra powered web crawler & sitemap generator for a single given domain. The program crawls pages on the given domain but does not follow external links. It quickly validates the domain and returns to the search form if a ping fails.
 
+Try it out! [Sitemap Generator](https://sitemapgenerate.herokuapp.com)
+
 
 ### To run the program locally
 ---
@@ -18,8 +20,9 @@ Dependencies - [bundler](http://bundler.io/) to install gems, app tested using R
 ### Testing - TDD
 ---
 
-RSpec (unit tests) / Capybara (feature tests)
-Travis CI
+* RSpec (unit tests)
+* Capybara (feature tests)
+* Travis CI
 
 ### Initial Design
 ---
