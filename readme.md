@@ -1,7 +1,7 @@
 # Sitemap Generator
 ---
 
-A simple Ruby / Sinatra powered web crawler & sitemap generator for a single given domain. The program crawls pages on the given domain but does not follow external links.
+A simple Ruby / Sinatra powered web crawler & sitemap generator for a single given domain. The program crawls pages on the given domain but does not follow external links. It quickly validates the domain and returns to the search form if a ping fails.
 
 
 ### To run the program locally
