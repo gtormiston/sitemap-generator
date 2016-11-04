@@ -91,12 +91,11 @@ So that I can see potential problems
 I want to see pages that are dead links (404)
 ```
 
-
 ### Testing - TDD
 ---
 
-RSpec / Capybara
-Travis CI setup for testing coverage
+RSpec (unit tests) / Capybara (feature tests)
+Travis CI
 
 ### Initial Design
 ---
